@@ -1,0 +1,32 @@
+baseURL = "https://example.org/"
+languageCode = "ko-kr"
+title = "새벽 소나무 팬아카이브"
+enableRobotsTXT = true
+summaryLength = 28
+
+[params]
+description = "별이 남은 새벽 소나무 숲에 팬아카이브 기록을 모읍니다."
+
+[taxonomies]
+tag = "tags"
+category = "categories"
+
+[[menus.main]]
+name = "홈"
+pageRef = "/"
+weight = 10
+
+[[menus.main]]
+name = "기록"
+pageRef = "/archive"
+weight = 20
+
+[[menus.main]]
+name = "작성실"
+pageRef = "/editor"
+weight = 30
+
+[[menus.main]]
+name = "링크"
+pageRef = "/references"
+weight = 40

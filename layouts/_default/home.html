@@ -1,0 +1,52 @@
+{{ define "main" }}
+  <section class="hero">
+    <div class="hero-copy">
+      <p class="eyebrow">Fan Archive</p>
+      <h1>{{ .Title }}</h1>
+      <p class="lead">{{ .Description }}</p>
+      <div class="hero-actions">
+        <a class="button primary" href="{{ "editor/" | relURL }}">새 기록 쓰기</a>
+        <a class="button secondary" href="{{ "archive/" | relURL }}">기록 보기</a>
+      </div>
+    </div>
+    <aside class="quick-note" aria-labelledby="quick-note-title">
+      <h2 id="quick-note-title">오늘의 한 줄</h2>
+      <textarea id="quick-note" rows="6" placeholder="잊기 전에 한 문장만 남겨두기"></textarea>
+      <p class="quiet">이 한 줄은 이 브라우저에만 저장됩니다.</p>
+    </aside>
+  </section>
+
+  <section class="archive-map" aria-labelledby="archive-map-title">
+    <div class="section-head">
+      <p class="eyebrow">Map</p>
+      <h2 id="archive-map-title">아카이브 지도</h2>
+    </div>
+    <div class="map-grid">
+      <article><span>01</span><h3>무대</h3><p>라이브, 콘서트, 방송 무대 감상.</p></article>
+      <article><span>02</span><h3>말</h3><p>인터뷰, 라이브 방송, 수상소감.</p></article>
+      <article><span>03</span><h3>작품</h3><p>앨범, 드라마, 영화, 회차별 기록.</p></article>
+      <article><span>04</span><h3>자료</h3><p>링크, 출처, 이미지 메모.</p></article>
+    </div>
+  </section>
+
+  <section class="latest" aria-labelledby="latest-title">
+    <div class="section-head split">
+      <div>
+        <p class="eyebrow">Latest</p>
+        <h2 id="latest-title">최근 기록</h2>
+      </div>
+      <a href="{{ "archive/" | relURL }}">전체 보기</a>
+    </div>
+    <div class="card-list">
+      {{ range first 3 (where site.RegularPages.ByDate.Reverse "Section" "archive") }}
+        {{ partial "note-card.html" . }}
+      {{ else }}
+        <article class="note-card">
+          <p class="card-date">아직 기록이 없습니다.</p>
+          <h3>첫 글을 준비해보세요</h3>
+          <p>작성실에서 Markdown 초안을 만들고 `content/archive/`에 추가하면 됩니다.</p>
+        </article>
+      {{ end }}
+    </div>
+  </section>
+{{ end }}

@@ -1,0 +1,33 @@
+{{ define "main" }}
+  <section class="page-title">
+    <p class="eyebrow">Archive</p>
+    <h1>{{ .Title }}</h1>
+    {{ with .Description }}<p class="lead">{{ . }}</p>{{ end }}
+    {{ .Content }}
+  </section>
+
+  <section class="timeline" aria-label="기록 목록">
+    {{ range .Pages.ByDate.Reverse }}
+      <article class="timeline-item">
+        <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
+        <div>
+          <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+          <p>{{ .Summary | plainify }}</p>
+          {{ with .Params.tags }}
+            <div class="tags">
+              {{ range . }}<span>{{ . }}</span>{{ end }}
+            </div>
+          {{ end }}
+        </div>
+      </article>
+    {{ else }}
+      <article class="timeline-item">
+        <time>준비중</time>
+        <div>
+          <h2>아직 기록이 없습니다</h2>
+          <p>작성실에서 초안을 만든 뒤 `content/archive/`에 새 Markdown 파일을 추가하세요.</p>
+        </div>
+      </article>
+    {{ end }}
+  </section>
+{{ end }}

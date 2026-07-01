@@ -1,0 +1,14 @@
+<header class="topbar">
+  <a class="brand" href="{{ "/" | relURL }}" aria-label="{{ site.Title }} 홈">
+    <span class="brand-mark"></span>
+    <span>{{ site.Title }}</span>
+  </a>
+  <nav class="nav" aria-label="주요 메뉴">
+    {{ $current := . }}
+    {{ range site.Menus.main }}
+      {{ $active := or ($current.IsMenuCurrent "main" .) ($current.HasMenuCurrent "main" .) }}
+      {{ if eq .Page $current }}{{ $active = true }}{{ end }}
+      <a class="nav-link{{ if $active }} is-active{{ end }}" href="{{ .URL | relURL }}">{{ .Name }}</a>
+    {{ end }}
+  </nav>
+</header>

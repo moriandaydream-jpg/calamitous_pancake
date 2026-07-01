@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="{{ site.Language.LanguageCode | default "ko" }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ site.Params.description }}{{ end }}">
+    <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} | {{ site.Title }}{{ end }}</title>
+    <link rel="stylesheet" href="{{ "assets/style.css" | relURL }}">
+  </head>
+  <body>
+    <div class="site-shell">
+      {{ partial "header.html" . }}
+      <main id="main">
+        {{ block "main" . }}{{ end }}
+      </main>
+      <footer class="site-footer">
+        <p>새벽 소나무 팬아카이브</p>
+      </footer>
+    </div>
+    <script src="{{ "assets/app.js" | relURL }}"></script>
+  </body>
+</html>

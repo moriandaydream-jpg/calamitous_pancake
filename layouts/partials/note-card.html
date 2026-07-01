@@ -1,0 +1,10 @@
+<article class="note-card">
+  <p class="card-date">{{ .Date.Format "2006-01-02" }}</p>
+  <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+  <p>{{ .Summary | plainify }}</p>
+  {{ with .Params.tags }}
+    <div class="tags">
+      {{ range . }}<span>{{ . }}</span>{{ end }}
+    </div>
+  {{ end }}
+</article>

@@ -1,0 +1,56 @@
+{{ define "main" }}
+  <section class="editor-layout">
+    <div class="editor-form">
+      <p class="eyebrow">Markdown</p>
+      <h1>{{ .Title }}</h1>
+
+      <label class="field">
+        <span>제목</span>
+        <input id="note-title" type="text" value="오늘의 기록">
+      </label>
+
+      <div class="field-row">
+        <label class="field">
+          <span>날짜</span>
+          <input id="note-date" type="date">
+        </label>
+        <label class="field">
+          <span>파일명</span>
+          <input id="note-file" type="text" value="today-note.md">
+        </label>
+      </div>
+
+      <label class="field">
+        <span>태그</span>
+        <input id="note-tags" type="text" value="새벽, 별, 소나무">
+      </label>
+
+      <label class="field">
+        <span>본문</span>
+        <textarea id="note-body" rows="14">오늘 남기고 싶은 순간을 적어보세요.
+
+- 장면:
+- 말:
+- 감정:
+- 다시 보고 싶은 이유:</textarea>
+      </label>
+
+      <div class="action-row">
+        <button class="button primary" id="download-md" type="button">MD 저장</button>
+        <button class="button secondary" id="copy-md" type="button">본문 복사</button>
+        <button class="button secondary" id="copy-hugo" type="button">Hugo 글 복사</button>
+      </div>
+      <p class="quiet" id="editor-status">초안은 이 브라우저에 자동 저장됩니다.</p>
+    </div>
+
+    <aside class="preview-panel" aria-labelledby="preview-title">
+      <div class="section-head split">
+        <h2 id="preview-title">미리보기</h2>
+        <button class="small-button" id="clear-draft" type="button">초안 비우기</button>
+      </div>
+      <article class="rendered-note" id="rendered-note"></article>
+      <h2 class="markdown-label">Markdown</h2>
+      <pre class="markdown-box" id="markdown-output"></pre>
+    </aside>
+  </section>
+{{ end }}

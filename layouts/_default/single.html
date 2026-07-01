@@ -1,0 +1,19 @@
+{{ define "main" }}
+  <article class="article">
+    <header class="article-head">
+      <p class="eyebrow">{{ if eq .Section "archive" }}Archive{{ else }}Page{{ end }}</p>
+      <h1>{{ .Title }}</h1>
+      {{ if eq .Section "archive" }}
+        <p class="article-date">{{ .Date.Format "2006-01-02" }}</p>
+      {{ end }}
+      {{ with .Params.tags }}
+        <div class="tags">
+          {{ range . }}<span>{{ . }}</span>{{ end }}
+        </div>
+      {{ end }}
+    </header>
+    <div class="article-body">
+      {{ .Content }}
+    </div>
+  </article>
+{{ end }}
